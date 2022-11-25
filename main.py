@@ -1,11 +1,21 @@
-from ui_loader import ui_importer
+import sys
+from PySide6.QtWidgets import QMainWindow, \
+    QApplication
+
+from ui_mainwindow import Ui_MainWindow
 
 
-def button_clicked(self, button_value: str):
-    print(button_value)
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super(MainWindow, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
 
 
 if __name__ == "__main__":
-    ui_file_name = "calculator-window.ui"
+    app = QApplication(sys.argv)
 
-    ui_importer(ui_file_name)
+    window = MainWindow()
+    window.show()
+
+    sys.exit(app.exec())
